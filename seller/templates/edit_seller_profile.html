@@ -1,0 +1,141 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Registration Form</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- MATERIAL DESIGN ICONIC FONT -->
+		<link rel="stylesheet" href="{% static 'register/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css' %}">
+		
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="{% static 'register/css/style.css  ' %}">
+	</head>
+
+	<body>
+
+		<div class="wrapper" style="background-image: url('{% static 'register/images/bg-registration-form-3.jpg' %}');">
+			<div class="inner">
+				<a><b><h4>{{message}}</h4></b></a>
+				<form action="{% url 'edit_seller_profile' %}" method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					<h3>Registration Form</h3>
+					<div class="form-group">
+						<div class="form-wrapper">
+							<label for="">First Name:</label>
+							<div class="form-holder">
+								<i class="zmdi zmdi-account-o"></i>
+								<input type="text" name="first_name" class="form-control" value="{{user_object.first_name}}" required="">
+							</div>
+						</div>
+						<div class="form-wrapper">
+							<label for="">Last Name:</label>
+							<div class="form-holder">
+								<i class="zmdi zmdi-account-o"></i>
+								<input type="text" name="last_name" class="form-control" value="{{user_object.last_name}}" required="">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="form-wrapper">
+							<label for="">Email:</label>
+							<div class="form-holder">
+								<i style="font-style: normal; font-size: 15px;">@</i>
+								<input type="email" name="email" class="form-control" value="{{user_object.email}}">
+							</div>
+						</div>
+						<div class="form-wrapper">
+							<label for="">Mobile No:</label>
+							<div class="form-holder">
+								<i class="zmdi zmdi-lock-outline"></i>
+								<input type="number" name="mobile" class="form-control" value="{{user_object.mobile}}" required="">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="form-wrapper">
+							<label for="">Password:</label>
+							<div class="form-holder">
+								<i class="zmdi zmdi-lock-outline"></i>
+								<input type="password" name="password" class="form-control" value="{{user_object.password}}" required="">
+							</div>
+						</div>
+						<div class="form-wrapper">
+							<label for="">Repeat Password:</label>
+							<div class="form-holder">
+								<i class="zmdi zmdi-lock-outline"></i>
+								<input type="cpassword" name="re_password" class="form-control" value="{{user_object.re_password}}" required="">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="form-wrapper">
+							<label for="">Dob:</label>
+							<div class="form-holder">
+								<i class="zmdi zmdi-lock-outline"></i>
+								<input type="date" name="dob" class="form-control" value="{{user_object.dob}}" required="">
+							</div>
+						</div>
+						<div class="form-wrapper">
+							<label>GENDER:</label>
+                            <input type="radio" name="gender" id="gender" value="male"
+                            {% if 'male' in user_object.gender %}
+                             checked
+                            {% endif %}
+                            >MALE
+                             <input type="radio" name="gender" id="gender" value="female"
+                            {% if 'female' in user_object.gender %}
+                            checked
+                             {% endif %}
+                              >FEMALE
+							{% comment %} <div class="form-holder select">
+								<select name="gender" id="" class="form-control">
+									<option value="male"
+                                    {% if 'male' in user_object.gender %}
+                                    selected
+                                     {% endif %}
+                                    >Male</option>
+									<option value="female"
+                                    {% if 'female' in user_object.gender %}
+                                    selected
+                                     {% endif %}
+                                    >Female</option>
+									<option value="other"
+                                    {% if 'other' in user_object.gender %}
+                                    selected
+                                     {% endif %}
+                                    >Other</option>
+								</select>
+								<i class="zmdi zmdi-face"></i>
+							</div> {% endcomment %}
+						</div>
+					</div>
+					<div class="form-end">
+						
+							
+							<div class="form-wrapper">
+								<label for="">images uplode:</label>
+								<div class="form-holder">
+									<input type="file" name="pic" class="from-control" value="{{pobj.pic.url}}">
+								</div>
+							</div>
+
+
+							
+						<div class="button-holder">
+							<button onclick="display()">Register Now</button>
+						</div>
+						
+					</div>
+				</form>
+			</div>
+		</div>
+	</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+    <script>
+		function display(){
+			var textdata=document.getElementById('txt').value;
+			alert(textdata);
+		}
+	</script>
+</html>
